@@ -2,7 +2,8 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const mongoose = require('mongoose');
-const app = require('./app');
+const app = require('./src/app');
+
 
 // Ganti MONGODB_URI di .env dengan connection string yang valid, misalnya:
 // MONGODB_URI=mongodb://127.0.0.1:27017/tourDB

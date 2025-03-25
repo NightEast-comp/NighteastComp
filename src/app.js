@@ -5,24 +5,25 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const path = require('path');
-const protectedRoutes = require('./routes/protectedRoutes');
 
 // Load environment variables dari .env
 dotenv.config();
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Routing
-const adminRoutes = require('./routes/adminRoutes');
-const authRoutes = require('./routes/authRoutes');
-const placeRoutes = require('./routes/placeRoutes');
+const authRoutes = require('./features/auth/authRoutes');
+const protectedRoutes = require('./features/auth/protectedRoutes');
+const adminRoutes = require('./features/admin/adminRoutes');
+const placeRoutes = require('./features/places/placeRoutes');
 app.use('/api/protected', protectedRoutes);
 
-app.use('/api/admin', adminRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/protected', protectedRoutes);
+app.use('/api/admin', adminRoutes);
 app.use('/api/places', placeRoutes);
 
 // Serve static files (misalnya upload gambar)

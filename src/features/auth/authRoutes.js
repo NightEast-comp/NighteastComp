@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Admin = require('../models/admin');
+const Admin = require('../../features/admin/adminModel');
 const bcrypt = require('bcryptjs'); // Gunakan bcryptjs
 const jwt = require('jsonwebtoken');
-const { loginAdmin } = require('../controllers/adminController');
+const { loginAdmin } = require('../../features/admin/adminController');
 
 // Register admin (Optional, biasanya cuma sekali buat admin)
 router.post('/register', async (req, res) => {
